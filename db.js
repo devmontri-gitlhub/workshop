@@ -5,7 +5,7 @@ const pool = new Pool({
   user: 'postgres',     // ตัวแปร: ชื่อผู้ใช้ DB
   host: 'localhost',    // ตัวแปร: ที่อยู่ DB
   database: 'workshop', // ตัวแปร: ชื่อฐานข้อมูล
-  password: 'password', // ตัวแปร: รหัสผ่าน
+  password: 'Montri5220', // ตัวแปร: รหัสผ่าน
   port: 5432,           // ตัวแปร: พอร์ต PostgreSQL
 });
 
