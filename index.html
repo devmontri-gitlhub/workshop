@@ -1,0 +1,52 @@
+<!DOCTYPE html> 
+<!-- โครงสร้าง: บอก browser ว่านี่คือเอกสาร HTML5 -->
+
+<html lang="en"> 
+<!-- โครงสร้าง: เปิดเอกสาร HTML และกำหนดภาษาเป็นอังกฤษ -->
+
+<head>
+  <meta charset="UTF-8"> 
+  <!-- คำสั่ง: กำหนด encoding เป็น UTF-8 เพื่อให้รองรับภาษาไทย/อังกฤษ -->
+  
+  <title>CRUD Workshop</title> 
+  <!-- โครงสร้าง: ชื่อหน้าเว็บที่จะแสดงบนแท็บ browser -->
+
+  <link rel="stylesheet" href="style.css"> 
+  <!-- คำสั่ง: import ไฟล์ CSS เข้ามา -->
+</head>
+
+<body>
+  <h1>User Management</h1> 
+  <!-- โครงสร้าง: หัวข้อหลักของหน้าเว็บ -->
+
+  <!-- ฟอร์มเพิ่มผู้ใช้ -->
+  <form id="userForm"> 
+    <!-- โครงสร้าง: ฟอร์มที่มี id="userForm" ใช้เป็นตัวแปรอ้างอิงใน JS -->
+    
+    <input type="text" id="name" placeholder="Enter name" required> 
+    <!-- ตัวแปร: name (ค่าที่ผู้ใช้กรอกจะถูกเก็บในตัวแปร name ใน JS) -->
+    
+    <input type="email" id="email" placeholder="Enter email" required> 
+    <!-- ตัวแปร: email (ค่าที่ผู้ใช้กรอกจะถูกเก็บในตัวแปร email ใน JS) -->
+    
+    <button type="submit">Add User</button> 
+    <!-- คำสั่ง: ปุ่มส่งข้อมูลไปยัง JS -->
+  </form>
+
+  <!-- ตารางแสดงผู้ใช้ -->
+  <table id="userTable"> 
+    <!-- โครงสร้าง: ตารางที่มี id="userTable" ใช้เป็นตัวแปรใน JS -->
+    <thead>
+      <tr>
+        <th>ID</th><th>Name</th><th>Email</th><th>Actions</th>
+        <!-- โครงสร้าง: หัวตาราง -->
+      </tr>
+    </thead>
+    <tbody></tbody> 
+    <!-- โครงสร้าง: ส่วนข้อมูล จะถูกเติมด้วย JS -->
+  </table>
+
+  <script src="script.js"></script> 
+  <!-- คำสั่ง: import ไฟล์ JS เข้ามา -->
+</body>
+</html>

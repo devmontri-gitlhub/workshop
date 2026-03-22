@@ -1,0 +1,33 @@
+body {
+  font-family: Arial, sans-serif; / ตัวแปร: font-family กำหนดฟอนต์ /
+  margin: 20px; / ตัวแปร: margin กำหนดระยะห่างรอบขอบหน้า /
+}
+
+h1 {
+  color: #333; / ตัวแปร: color กำหนดสีข้อความ /
+}
+
+form {
+  margin-bottom: 20px; / ตัวแปร: margin-bottom /
+}
+
+input {
+  margin-right: 10px; / ตัวแปร: margin-right /
+  padding: 5px; / ตัวแปร: padding /
+}
+
+table {
+  width: 100%; / ตัวแปร: width /
+  border-collapse: collapse; / คำสั่ง: รวมเส้นขอบ /
+}
+
+th, td {
+  border: 1px solid #ccc; / ตัวแปร: border /
+  padding: 8px; / ตัวแปร: padding /
+  text-align: center; / ตัวแปร: text-align /
+}
+
+button {
+  padding: 5px 10px; / ตัวแปร: padding /
+  cursor: pointer; / ตัวแปร: cursor /
+}
