@@ -1,7 +1,6 @@
 // ✅ โหลดผู้ใช้เมื่อเปิดหน้า
 document.addEventListener('DOMContentLoaded', () => {
   loadUsers();
-  // 👉 เพิ่ม event listener สำหรับ form
   document.getElementById('userForm').addEventListener('submit', addUser);
 });
 
@@ -15,6 +14,11 @@ async function loadUsers() {
     const tbody = document.querySelector('#userTable tbody'); 
     tbody.innerHTML = '';
 
+    if (users.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="4" style="text-align: center;">ไม่มีข้อมูลผู้ใช้</td></tr>';
+      return;
+    }
+
     users.forEach(user => {
       const row = document.createElement('tr');
       row.innerHTML = `
@@ -22,8 +26,8 @@ async function loadUsers() {
         <td>${user.name}</td>
         <td>${user.email}</td>
         <td>
-          <button onclick="deleteUser(${user.id})">🗑️ Delete</button>
-          <button onclick="editUser(${user.id})">✏️ Edit</button>
+          <button class="btn-delete" onclick="deleteUser(${user.id})">🗑️ Delete</button>
+          <button class="btn-edit" onclick="editUser(${user.id})">✏️ Edit</button>
         </td>
       `;
       tbody.appendChild(row);
@@ -38,8 +42,13 @@ async function loadUsers() {
 async function addUser(event) {
   event.preventDefault();
   
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+
+  if (!name || !email) {
+    alert('❌ กรุณากรอกชื่อและอีเมลให้สมบูรณ์');
+    return;
+  }
 
   try {
     const response = await fetch('http://localhost:3000/users', {
@@ -48,34 +57,39 @@ async function addUser(event) {
       body: JSON.stringify({ name, email })
     });
 
-    if (!response.ok) throw new Error('Failed to add user');
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to add user');
+    }
 
-    // ✅ เคลียร์ฟอร์มและโหลดข้อมูลใหม่
     document.getElementById('userForm').reset();
     loadUsers();
     alert('✅ เพิ่มผู้ใช้สำเร็จ');
   } catch (err) {
     console.error('Error:', err);
-    alert('❌ ไม่สามารถเพิ่มผู้ใช้ได้');
+    alert(`❌ ไม่สามารถเพิ่มผู้ใช้ได้: ${err.message}`);
   }
 }
 
 // ✅ ฟังก์ชันลบผู้ใช้
 async function deleteUser(id) {
-  if (!confirm('คุณแน่ใจที่จะลบหรือไม่?')) return;
+  if (!confirm('คุณแน่ใจที่จะลบผู้ใช้นี้หรือไม่?')) return;
 
   try {
     const response = await fetch(`http://localhost:3000/users/${id}`, {
       method: 'DELETE'
     });
 
-    if (!response.ok) throw new Error('Failed to delete user');
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to delete user');
+    }
 
     loadUsers();
     alert('✅ ลบผู้ใช้สำเร็จ');
   } catch (err) {
     console.error('Error:', err);
-    alert('❌ ไม่สามารถลบผู้ใช้ได้');
+    alert(`❌ ไม่สามารถลบผู้ใช้ได้: ${err.message}`);
   }
 }
 
@@ -87,19 +101,27 @@ async function editUser(id) {
   const email = prompt('อีเมลใหม่:');
   if (!email) return;
 
+  if (!name.trim() || !email.trim()) {
+    alert('❌ กรุณากรอกชื่อและอีเมลให้สมบูรณ์');
+    return;
+  }
+
   try {
     const response = await fetch(`http://localhost:3000/users/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email })
+      body: JSON.stringify({ name: name.trim(), email: email.trim() })
     });
 
-    if (!response.ok) throw new Error('Failed to update user');
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to update user');
+    }
 
     loadUsers();
     alert('✅ แก้ไขผู้ใช้สำเร็จ');
   } catch (err) {
     console.error('Error:', err);
-    alert('❌ ไม่สามารถแก้ไขผู้ใช้ได้');
+    alert(`❌ ไม่สามารถแก้ไขผู้ใช้ได้: ${err.message}`);
   }
 }

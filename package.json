@@ -1,20 +1,30 @@
 {
   "name": "workshop_skill",
   "version": "1.0.0",
-  "description": "",
-  "main": "db.js",
+  "description": "User Management CRUD Workshop",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/devmontri-gitlhub/workshop.git"
   },
-  "keywords": [],
+  "keywords": ["crud", "express", "postgres"],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "pg": "^8.10.0",
+    "mongoose": "^7.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
   "bugs": {
     "url": "https://github.com/devmontri-gitlhub/workshop/issues"
   },
