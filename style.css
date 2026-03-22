@@ -1,33 +1,50 @@
-body {
-  font-family: Arial, sans-serif; / ตัวแปร: font-family กำหนดฟอนต์ /
-  margin: 20px; / ตัวแปร: margin กำหนดระยะห่างรอบขอบหน้า /
+ body {
+  font-family: Arial, sans-serif; /* ✅ แก้เป็น /* */ */
+  margin: 20px;
 }
 
 h1 {
-  color: #333; / ตัวแปร: color กำหนดสีข้อความ /
+  color: #333;
 }
 
 form {
-  margin-bottom: 20px; / ตัวแปร: margin-bottom /
+  margin-bottom: 20px;
 }
 
 input {
-  margin-right: 10px; / ตัวแปร: margin-right /
-  padding: 5px; / ตัวแปร: padding /
+  margin-right: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 table {
-  width: 100%; / ตัวแปร: width /
-  border-collapse: collapse; / คำสั่ง: รวมเส้นขอบ /
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
 th, td {
-  border: 1px solid #ccc; / ตัวแปร: border /
-  padding: 8px; / ตัวแปร: padding /
-  text-align: center; / ตัวแปร: text-align /
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+  font-weight: bold;
 }
 
 button {
-  padding: 5px 10px; / ตัวแปร: padding /
-  cursor: pointer; / ตัวแปร: cursor /
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-right: 5px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #0056b3;
 }
